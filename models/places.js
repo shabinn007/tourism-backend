@@ -1,26 +1,31 @@
+/** @format */
+
 import mongoose from "mongoose";
 import userSchema from "./user.js";
 // import user from "./user.js";
 // import { ObjectId } from "mongoose.Schema.Types";
 // const {ObjectId} =mongoose.Schema.Types
-const postSchema = new mongoose.Schema({
-    title:{
-        type: mongoose.Schema.Types.String,
-        required: true
+const placeSchema = new mongoose.Schema({
+  title: {
+    type: mongoose.Schema.Types.String,
+    required: true,
+  },
+  description: {
+    type: mongoose.Schema.Types.String,
+    required: true,
+  },
+  photo: [
+    {
+      type: mongoose.Schema.Types.String,
+      required: true,
     },
-    description:{
-        type: mongoose.Schema.Types.String,
-        required: true
-    },
-    photo:{
-        type: mongoose.Schema.Types.String,
-        default :"non pic"
-    },
-    time:{
-        type: mongoose.Schema.Types.Number,
-        required: true
-    }
-    
-})
+  ],
+  time: {
+    type: mongoose.Schema.Types.String,
+    required: true,
+  },
+});
+// const place = mongoose.model("Place", placeSchema);
+const Places = mongoose.model("Place", placeSchema);
 
-export default postSchema
+export default Places;

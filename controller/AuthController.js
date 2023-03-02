@@ -33,7 +33,7 @@ export const Usersignup = async (req, res) => {
       email: email,
       username: username,
       password: encryptedPassword,
-      phone: phone,
+      // phone: phone,
     });
 
     await User.save();
@@ -46,39 +46,39 @@ export const Usersignup = async (req, res) => {
 
 // ......................adminSignup...................?
 
-export async function signUpAdmin(req, res, next) {
-  let username = req.body.user.username;
+// export async function signUpAdmin(req, res, next) {
+//   let username = req.body.user.username;
 
-  console.log(username);
+//   console.log(username);
 
-  let { user } = await findUser(username);
-  if (user) return res.status(400).send({ message: "user already registered" });
+//   let { user } = await findUser(username);
+//   if (user) return res.status(400).send({ message: "user already registered" });
 
-  const password = req.body.user.password;
+//   const password = req.body.user.password;
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+//   const salt = await bcrypt.genSalt(10);
+//   const hashedPassword = await bcrypt.hash(password, salt);
 
-  try {
-    const { user } = await saveUser({
-      ...req.body.user,
-      password: hashedPassword,
-    });
+//   try {
+//     const { user } = await saveUser({
+//       ...req.body.user,
+//       password: hashedPassword,
+//     });
 
-    console.log(user);
-    if (user.role === "doctor") {
-      await saveDoctor({
-        userId: user._id,
-        ...req.body.doctor,
-      });
-    }
+//     console.log(user);
+//     if (user.role === "doctor") {
+//       await saveDoctor({
+//         userId: user._id,
+//         ...req.body.doctor,
+//       });
+//     }
 
-    res.status(200).send({ success: true });
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
-}
+//     res.status(200).send({ success: true });
+//   } catch (err) {
+//     console.log(err);
+//     next(err);
+//   }
+// }
 
 // ........................................LogIN.....................................
 

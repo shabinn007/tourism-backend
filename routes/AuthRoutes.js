@@ -1,21 +1,18 @@
 /** @format */
 
 import express from "express";
-import { Usersignup, userLogin, signUpAdmin } from "../controller/AuthController.js";
+import { Usersignup, userLogin } from "../controller/AuthController.js";
 
 const router = express.Router();
 
 router.post("/signup", Usersignup);
 router.post("/signin", userLogin);
 
-
-
-
-router.post(
-    ${path}/signupadmin,
-    adminMiddleware,
-    signUpAdmin
-  );
+// router.post(
+//     ${path}/signUpAdmin,
+//     adminMiddleware,
+//     signUpAdmin
+//   );
 
 export default router;
 
