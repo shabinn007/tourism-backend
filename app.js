@@ -28,8 +28,6 @@ app.use(TicketRoutes);
 
 // import search from "./routes/search.js";
 // app.use(search);
-import searchRoutes from "./routes/searchRoutes.js";
-app.use(searchRoutes);
 
 const DATABASE_URL = process.env.DATABASE_URL;
 // DB Connection

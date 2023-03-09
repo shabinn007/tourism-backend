@@ -20,7 +20,11 @@ const placeSchema = new mongoose.Schema({
       required: true,
     },
   ],
-  time: {
+  location: {
+    type: mongoose.Schema.Types.String,
+    required: true,
+  },
+  ticket_price: {
     type: mongoose.Schema.Types.String,
     required: true,
   },

@@ -2,6 +2,7 @@
 
 import express from "express";
 import { CreatePlace, AllPlaces } from "../controller/PlacesController.js";
+
 // import placeSchema from "../models/places.js";
 
 const router = express.Router();
@@ -9,6 +10,7 @@ const router = express.Router();
 router.post("/createplace", CreatePlace);
 
 router.get("/allplaces", AllPlaces);
+// router.get("/allplaces", searchController.search);
 
 export default router;
 
