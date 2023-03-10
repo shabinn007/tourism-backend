@@ -59,5 +59,50 @@ export const AllPlaces = async (req, res) => {
       console.log(err);
     });
 };
+// .................update places.......................
 
-// ,,,,,,,,,,,sewarch.............
+export const UpdatePlace = async (req, res) => {
+  const { id } = req.params;
+  const { title, description, location, ticket_price } = req.body;
+
+  if (!title || !description || !location || !ticket_price) {
+    return res.status(422).json({ error: "add all fields" });
+  }
+
+  try {
+    const updatedPlace = await Placesmodel.findByIdAndUpdate(
+      id,
+      {
+        title,
+        description,
+        location,
+        ticket_price,
+      },
+      { new: true }
+    );
+    if (!updatedPlace) {
+      return res.status(404).json({ error: "Place not found" });
+    }
+    res.json({ message: "Place updated successfully", updatedPlace });
+  } catch (err) {
+    console.log(err);
+    res.json({ message: "Something went wrong while updating place" });
+  }
+};
+
+// ,,,,,,,,,,,delete places  .............
+
+export const DeletePlace = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedPlace = await Placesmodel.findByIdAndDelete(id);
+    if (!deletedPlace) {
+      return res.status(404).json({ error: "Place not found" });
+    }
+    res.json({ message: "Place deleted successfully" });
+  } catch (err) {
+    console.log(err);
+    res.json({ message: "Something went wrong while deleting place" });
+  }
+};
