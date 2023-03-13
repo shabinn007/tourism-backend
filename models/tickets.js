@@ -3,15 +3,15 @@
 import mongoose from "mongoose";
 
 const TicketSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-  ticket_no: {
-    type: mongoose.Schema.Types.Number,
+  name: {
+    type: mongoose.Schema.Types.String,
     required: true,
   },
   place: {
+    type: mongoose.Schema.Types.String,
+    required: true,
+  },
+  no_peaple: {
     type: mongoose.Schema.Types.String,
     required: true,
   },
@@ -20,9 +20,10 @@ const TicketSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: mongoose.Schema.Types.Date,
+    type: mongoose.Schema.Types.String,
     required: true,
   },
 });
 
-export default TicketSchema;
+const Ticket = mongoose.model("Ticket", TicketSchema);
+export default Ticket;
