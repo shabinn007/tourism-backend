@@ -17,7 +17,7 @@ const placeSchema = new mongoose.Schema({
   photo: [
     {
       type: mongoose.Schema.Types.String,
-      required: true,
+      required: false,
     },
   ],
   location: {
