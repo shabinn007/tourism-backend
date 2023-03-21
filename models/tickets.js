@@ -8,7 +8,7 @@ const TicketSchema = new mongoose.Schema({
     required: true,
   },
   place: {
-    type: mongoose.Schema.Types.String,
+    type: mongoose.Schema.Types.String  ,
     required: true,
   },
   no_peaple: {
