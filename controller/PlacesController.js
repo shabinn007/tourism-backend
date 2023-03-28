@@ -31,6 +31,25 @@ export const CreatePlace = async (req, res) => {
     res.json({ message: "Something went wrong in place" });
   }
 };
+// .....................Single view..........................
+
+export const SingleView = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const place = await Placesmodel.findById(id).populate(
+      "postedBy",
+      "_id name"
+    );
+    if (!place) {
+      return res.status(404).json({ error: "Place not found" });
+    }
+    res.json(place);
+  } catch (err) {
+    console.log(err);
+    res.json({ message: "Something went wrong while fetching place" });
+  }
+};
 
 // ............view places ............................
 
